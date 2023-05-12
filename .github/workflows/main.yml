@@ -30,18 +30,19 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [18.x]
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install
-      - run: node ./node_modules/serverless/bin/serverless.js config credentials --provider aws --key AKIATXF4JQPHRY53OCNL --secret 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
-      - run: node ../../node_modules/serverless/bin/serverless.js deploy
-        working-directory: ./serverless/challenge-cicd-serverless
-        env:
-          AWS_ACCESS_KEY_ID: AKIATXF4JQPHRY53OCNL
-          AWS_SECRET_ACCESS_KEY: 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
-          SLS_DEBUG: 1
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm ci
+    - name: serverless deploy
+      uses: serverless/github-action@v3.2
+      with:
+        args: deploy
+      env:
+        AWS_ACCESS_KEY_ID: AKIATXF4JQPHRY53OCNL
+        AWS_SECRET_ACCESS_KEY: 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
+        SLS_DEBUG: 1
