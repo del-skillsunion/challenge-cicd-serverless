@@ -3,8 +3,7 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 
 on:
   push:
-    branches: 
-      - main
+    branches:  [ main, "*"]
 
 jobs:
   pre-deploy:
@@ -27,6 +26,7 @@ jobs:
   deploy:
     name: deploy
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     needs: install-dependencies
     steps:
     - uses: actions/checkout@v3
