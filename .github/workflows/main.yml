@@ -45,4 +45,3 @@ jobs:
       env:
         AWS_ACCESS_KEY_ID: AKIATXF4JQPHRY53OCNL
         AWS_SECRET_ACCESS_KEY: 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
-        SLS_DEBUG: 1
