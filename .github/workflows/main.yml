@@ -31,7 +31,5 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Run Installation of Dependencies Commands
-        run: npm install
-      - name: Run Deploy Commands
-        run: serverless deploy
+        run: npm install && serverless deploy
       - run: echo "🍏 This job's status is ${{ job.status }}."
