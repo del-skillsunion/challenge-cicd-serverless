@@ -1,11 +1,14 @@
-# CHANGE-TO-YOURNAME-aws-node-http-api-project
-service: aws-node-http-api-project
-frameworkVersion: '3'
+service: challenge-cicd-serverless
 
 provider:
   name: aws
   runtime: nodejs18.x
   region: ap-southeast-1
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        -  "*"
+      Resource: "*"
 
 functions:
   api:
