@@ -1,1 +1,1 @@
-# challenge-cicd-serverless
+# CICD with Serverless
