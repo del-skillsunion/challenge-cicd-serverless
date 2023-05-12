@@ -42,6 +42,6 @@ jobs:
       - run: node ../../node_modules/serverless/bin/serverless.js deploy --stage prod --verbose
         working-directory: ./serverless/backend-api
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID: AKIATXF4JQPHRY53OCNL
+          AWS_SECRET_ACCESS_KEY: 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
           SLS_DEBUG: 1
