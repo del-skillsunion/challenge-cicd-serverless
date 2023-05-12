@@ -26,12 +26,23 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
   deploy:
+    name: deploy
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v3
-      - name: Run Installation of Dependencies Commands
-        run: npm install
-      - name: Run Deploy Commands
-        run: serverless deploy
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm run build
+      - run: node ./node_modules/serverless/bin/serverless.js config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - run: node ../../node_modules/serverless/bin/serverless.js deploy --stage prod --verbose
+        working-directory: ./serverless/backend-api
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          SLS_DEBUG: 1
