@@ -39,7 +39,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: node ./node_modules/serverless/bin/serverless.js config credentials --provider aws --key AKIATXF4JQPHRY53OCNL --secret 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
-      - run: node ../../node_modules/serverless/bin/serverless.js deploy --stage prod --verbose
+      - run: node ../../node_modules/serverless/bin/serverless.js deploy
         working-directory: ./serverless/challenge-cicd-serverless
         env:
           AWS_ACCESS_KEY_ID: AKIATXF4JQPHRY53OCNL
