@@ -29,6 +29,8 @@ jobs:
   install-dependencies:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
       - name: Run Test Commands
         run: npm install
       - run: echo "🍏 This job's status is ${{ job.status }}."
@@ -36,6 +38,8 @@ jobs:
   unit-test:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
       - name: Run Test Commands
         run: npm test
       - run: echo "🍏 This job's status is ${{ job.status }}."
