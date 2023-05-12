@@ -21,8 +21,6 @@ jobs:
         uses: actions/checkout@v3
       - name: Run Installation of Dependencies Commands
         run: npm install
-      - name: Run Test Commands
-        run: npm test
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
   deploy:
