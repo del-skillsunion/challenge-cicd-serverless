@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
-      - name: Run Test Commands
+      - name: Run Installation of Dependencies Commands
         run: npm install
       - name: Run Test Commands
         run: npm test
@@ -30,8 +30,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
-      - name: Run Test Commands
+      - name: Run Installation of Dependencies Commands
         run: npm install
-      - name: Run Test Commands
+      - name: Run Deploy Commands
         run: serverless deploy
       - run: echo "🍏 This job's status is ${{ job.status }}."
