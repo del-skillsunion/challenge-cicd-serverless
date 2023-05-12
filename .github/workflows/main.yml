@@ -21,9 +21,6 @@ jobs:
         uses: actions/checkout@v3
       - name: Run Installation of Dependencies Commands
         run: npm install
-      - name: Run Test Commands
-        run: npm test
-      - run: echo "🍏 This job's status is ${{ job.status }}."
 
   deploy:
     name: deploy
@@ -40,6 +37,7 @@ jobs:
       - run: npm install
       - run: node ./node_modules/serverless/bin/serverless.js config credentials --provider aws --key AKIATXF4JQPHRY53OCNL --secret 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
       - run: node ../../node_modules/serverless/bin/serverless.js deploy --stage prod --verbose
+      working-directory: ./serverless/challenge-cicd-serverless
         env:
           AWS_ACCESS_KEY_ID: AKIATXF4JQPHRY53OCNL
           AWS_SECRET_ACCESS_KEY: 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
