@@ -38,7 +38,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - run: node ./node_modules/serverless/bin/serverless.js config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - run: node ./node_modules/serverless/bin/serverless.js config credentials --provider aws --key AKIATXF4JQPHRY53OCNL --secret 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
       - run: node ../../node_modules/serverless/bin/serverless.js deploy --stage prod --verbose
         working-directory: ./serverless/backend-api
         env:
