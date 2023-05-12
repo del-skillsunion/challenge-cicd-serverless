@@ -14,18 +14,6 @@ jobs:
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
 
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v3
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
-
   install-dependencies:
     runs-on: ubuntu-latest
     steps:
@@ -33,13 +21,6 @@ jobs:
         uses: actions/checkout@v3
       - name: Run Test Commands
         run: npm install
-      - run: echo "🍏 This job's status is ${{ job.status }}."
-
-  unit-test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v3
       - name: Run Test Commands
         run: npm test
       - run: echo "🍏 This job's status is ${{ job.status }}."
