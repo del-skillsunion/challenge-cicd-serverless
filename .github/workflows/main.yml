@@ -25,7 +25,14 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-  
+
+  install-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Test Commands
+        run: |
+          npm install
+      - run: echo "🍏 This job's status is ${{ job.status }}."
 
   unit-test:
     runs-on: ubuntu-latest
